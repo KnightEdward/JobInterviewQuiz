@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JobInterviewQuiz.Dal.Sql;
+using JobInterviewQuiz.Model.ViewModels;
 
 namespace JobInterviewQuiz.Controllers
 {
@@ -10,7 +12,15 @@ namespace JobInterviewQuiz.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            var dal = new QuestionDal();
+
+            var model = new TestModel
+            {
+                Questions = dal.GetAllQuestions()
+            };
+
+            return View(model);
         }
 
         public ActionResult About()

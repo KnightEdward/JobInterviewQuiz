@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobInterviewQuiz", "JobInterviewQuiz\JobInterviewQuiz.csproj", "{54D88084-386E-456A-A584-DA19C3DF30A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobInterviewQuiz.Tests", "JobInterviewQuiz.Tests\JobInterviewQuiz.Tests.csproj", "{62AC999E-9F40-40CB-850B-36D68F337E7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54D88084-386E-456A-A584-DA19C3DF30A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D88084-386E-456A-A584-DA19C3DF30A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D88084-386E-456A-A584-DA19C3DF30A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D88084-386E-456A-A584-DA19C3DF30A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62AC999E-9F40-40CB-850B-36D68F337E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62AC999E-9F40-40CB-850B-36D68F337E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62AC999E-9F40-40CB-850B-36D68F337E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62AC999E-9F40-40CB-850B-36D68F337E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

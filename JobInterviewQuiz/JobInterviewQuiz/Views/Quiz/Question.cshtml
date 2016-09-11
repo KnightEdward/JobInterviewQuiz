@@ -1,0 +1,287 @@
+﻿@using JobInterviewQuiz.Model.ViewModels
+@model JobInterviewQuiz.Model.ViewModels.QuestionViewModel
+@{
+    ViewBag.Title = "Question";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    /*.form-group input[type="checkbox"] {
+        display: none;
+    }
+
+    .form-group input[type="checkbox"] + .btn-group > label span {
+        width: 20px;
+    }
+
+    .form-group input[type="checkbox"] + .btn-group > label span:first-child {
+        display: none;
+    }
+    .form-group input[type="checkbox"] + .btn-group > label span:last-child {
+        display: inline-block;
+    }
+
+    .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+        display: inline-block;
+    }
+    .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+        display: none;
+    }*/
+</style>
+
+<link href="~/Content/Question.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/LoadingBar.js"></script>
+
+<div id="loader" style="display: none"></div>
+
+<div class="bodyContent" id="body">
+    <div>
+        <p class="TimerStyle">Time left : <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></p><br />
+    </div>
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="qustionForm">
+        <div>
+            <span class="label"><label>Question @QuestionViewModel.countIdQuestion of @QuestionViewModel.NumberOfQuestions</label></span>
+            <span class="alert alert-warning" style="display: none" role="alert" id="warningMessage">Mai ai 5 minute</span>
+        </div>
+
+        <form class="answers">
+            <input type="hidden" value="@Model.QuestionID" name="QuestionID" />
+
+            @*<input type="hidden" value="@Model.IsReviewMode" name="IsReviewMode"/>*@
+
+            <label class="questionText">@Model.QuestionText</label>
+
+
+            <div class="rdbtn">
+                @if (!String.IsNullOrEmpty(Model.Error))
+                {
+                    <div class="alert alert-info" role="alert" id="InfoMessage"> @Model.Error</div>
+                }
+
+                @foreach (var answer in Model.Answers)
+                {
+                    <input type="hidden" value="@answer.Id" name="Id" />
+                    if (Model.QuestionType.Equals("radio"))
+                    {
+                        <input class="answersName" type="radio" name="AnswersIds" value="@answer.Id" @(Model.AnswersIds.Contains(@answer.Id) ? "checked='checked'" : "" ) />
+                        @answer.Text_Answer
+                        <br /><br />
+                    }
+                    else
+                    {
+                        <input class="answersName" type="checkbox" name="AnswersIds" value="@answer.Id" @(Model.AnswersIds.Contains(@answer.Id) ? "checked='checked'" : "" ) />
+                        @answer.Text_Answer
+                        <br /><br />
+                    }
+                }
+            </div>
+
+            <br />
+
+            @*<div class="input-group input-group-lg">
+
+                    <span class="input-group-addon"> Check for review </span>
+                    <input type="checkbox" name="ReviewQuestionID" value="@Model.QuestionID" @(Model.ReviewQuestionID != null ? "checked" : "") />
+
+                </div><br />*@
+
+            <br /><br />
+            <div class="[ form-group ]">
+                <input hidden type="checkbox" id="fancy-checkbox-default" autocomplete="off" name="ReviewQuestionID" value="@Model.QuestionID" @(Model.ReviewQuestionID != null ? "checked" : "") />
+                <div class="[ btn-group ]">
+                    <label for="fancy-checkbox-default" class="[ btn btn-default ]">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label for="fancy-checkbox-default" class="[ btn btn-default active ]">
+                        Check For Review
+                    </label>
+                </div>
+            </div>
+
+
+
+
+            @if (QuestionViewModel.IsLastQuestion)
+            {
+
+                <button type="button" class="buttonNext @Model.ButtonFinishClass" data-toggle="modal" data-target="#FinishQuiz" id="modButtons">
+                    Finish
+                </button>
+
+                @*<input type="submit" formmethod="post" class="buttonNext @Model.ButtonFinishClass" formaction="@Url.Action("NextQuestion", "Quiz")" value="Finish" onclick='$(".buttonPrevious").hide();$(".buttonNext").hide();'/>*@
+
+                @*<button type="button" class="buttonNext @Model.ButtonFinishClass" data-toggle="modal" data-target="#FinishQuiz" id="modButtons">
+                        Finish
+                    </button>*@
+
+            }
+            else
+            {
+                <input type="submit" formmethod="post" class="buttonNext @Model.ButtonFinishClass" formaction="@Url.Action("NextQuestion", "Quiz")" value="Next" ) />
+            }
+            @if (QuestionViewModel.countIdQuestion != 1)
+            {
+                <input type="submit" formmethod="post" class="buttonPrevious" formaction="@Url.Action("PreviousQuestion", "Quiz")" value="Previous" />
+            }
+
+
+
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="FinishQuiz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                        </div>
+
+                        @*/////////////////////*@
+
+
+
+                        <div id="ReviewReady">
+
+                            <div class="modal-body">
+
+                                <div class="alert alert-warning">
+                                    <strong>Warning!</strong> You still have questions set for review !
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+
+                                <div class="container">
+
+                                    <div class="pull-left">
+
+                                        <input type="submit" formmethod="post" class="btn btn-lg" formaction="@Url.Action("NextQuestion", "Quiz")" value="Review Questions" name="ButtonPressed" />
+
+                                    </div>
+
+                                    <div class="pull-right">
+
+                                        <input type="submit" formmethod="post" class="btn btn-lg" formaction="@Url.Action("NextQuestion", "Quiz")" value="Finish" name="ButtonPressed" />
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="GoFinish">
+                            @if (QuestionViewModel.ReviewQuestionIDList != null && QuestionViewModel.ReviewQuestionIDList.Count != 0 && QuestionViewModel.ReviewQuestionIDList.LastOrDefault() != Model.QuestionID)
+                            {
+
+                                <div class="modal-body">
+
+                                    <div class="alert alert-warning">
+                                        <strong>Warning!</strong> You still have questions set for review !
+                                    </div>
+
+                                </div>
+
+                                    <div class="modal-footer">
+
+                                        <div class="container">
+
+                                            <div class="pull-left">
+
+                                                <input type="submit" formmethod="post" class="btn btn-lg" formaction="@Url.Action("NextQuestion", "Quiz")" value="Review Questions" name="ButtonPressed" />
+
+
+
+                                            </div>
+
+                                            <div class="pull-right">
+
+                                                <input type="submit" formmethod="post" class="btn btn-lg" formaction="@Url.Action("NextQuestion", "Quiz")" value="Finish" name="ButtonPressed" />
+
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                            }
+                            else
+                            {
+
+                                @*<div id="GoFinish">*@
+
+                                <div class="modal-body">
+
+                                    <div class="alert alert-warning">
+                                        <strong>Warning!</strong> Are you sure you want to finish ?
+                                    </div>
+
+                                </div>
+
+                                    <div class="modal-footer">
+                                        <input type="submit" formmethod="post" class="btn btn-lg" formaction="@Url.Action("NextQuestion", "Quiz")" value="Finish" name="ButtonPressed" />
+                                    </div>
+
+
+                                    @*</div>*@
+
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+
+
+    <script src="~/Scripts/ProgressBarAndTimer.js"></script>
+
+    <script>
+
+        if($("#fancy-checkbox-default").is(":checked"))
+        {
+            $("#GoFinish").hide();
+            $("#ReviewReady").show();
+        }
+        else
+        {
+            $("#GoFinish").show();
+            $("#ReviewReady").hide();
+        }
+
+        $("#fancy-checkbox-default").click(function() {
+            if($("#fancy-checkbox-default").is(":checked"))
+            {
+                $("#GoFinish").hide();
+                $("#ReviewReady").show();
+            }
+            else
+            {
+                $("#GoFinish").show();
+                $("#ReviewReady").hide();
+            }
+        });
+
+
+        startTimeAndBar("progress-bar",@Model.CurrentPoint.ToString().Replace(',','.'),@Model.RemainingTime.Hours,@Model.RemainingTime.Minutes,@Model.RemainingTime.Seconds);
+
+    </script>
+</div>

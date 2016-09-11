@@ -40,7 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAnswerDal.cs" />
     <Compile Include="IQuestionDal.cs" />
+    <Compile Include="ITechnologyQuestionDal.cs" />
+    <Compile Include="ITestQuestionsAnswersDal.cs" />
+    <Compile Include="ITestQuestionsDal.cs" />
+    <Compile Include="ITestsDal.cs" />
+    <Compile Include="ITestTypeDal.cs" />
+    <Compile Include="IUserDal.cs" />
+    <Compile Include="IUserTestDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,8 @@
+﻿.table-responsive {
+    overflow-x: auto;
+}
+
+.tick {
+    font-size: 23px;
+    color: green;
+}

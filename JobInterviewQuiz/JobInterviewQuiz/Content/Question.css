@@ -1,0 +1,194 @@
+﻿.bodyContent {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.questionForm {
+    position: absolute;
+}
+
+.Progressbar {
+    max-width: 100%;
+    padding-right: 60%;
+    padding-left: 4%;
+}
+
+
+.TimerStyle {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Trebuchet MS;
+}
+
+.label {
+    position: relative;
+    top: 20px;
+    font-size: 23px;
+    background-color: lightgrey;
+    margin: 2px;
+    border-style: solid;
+    border-color: gray;
+    font-family: Trebuchet MS;
+}
+
+.answers {
+    top: 40px;
+    position: relative;
+}
+
+.questionText {
+    position: relative;
+    font-size: 25px;
+    font-family: Trebuchet MS;
+}
+
+.rdbtn {
+    position: relative;
+    top: 50px;
+    font-size: 20px;
+}
+
+.buttonNext {
+    color: white;
+    top: 250px;
+    left: 500px;
+    position: relative;
+    font-size: 24px;
+    padding: 10px 60px;
+    text-align: center;
+    text-decoration: none;
+    margin: auto;
+    border-radius: 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-box-shadow: 5px 5px 5px #000000;
+    -moz-box-shadow: 5px 5px 5px #000000;
+    box-shadow: 5px 5px 5px #000000;
+    outline: none;
+    font-family: Trebuchet MS;
+}
+
+
+.buttonPrevious {
+    background-color: #f44336;
+    color: white;
+    right: 500px;
+    top: 187px;
+    position: relative;
+    padding: 10px 40px;
+    font-size: 24px;
+    text-align: center;
+    text-decoration: none;
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-box-shadow: 5px 5px 5px #000000;
+    -moz-box-shadow: 5px 5px 5px #000000;
+    box-shadow: 5px 5px 5px #000000;
+    outline: none;
+    font-family: Trebuchet MS;
+}
+
+    .buttonPrevious:hover {
+        background-color: #cc0000;
+    }
+
+.buttonStart:hover {
+    background-color: #cc0000;
+}
+
+
+.redButtonClass {
+    background-color: #f44336;
+}
+
+    .redButtonClass:hover {
+        background-color: #cc0000;
+    }
+
+.greenButtonClass {
+    background-color: #53c653;
+}
+
+    .greenButtonClass:hover {
+        background-color: ForestGreen;
+    }
+
+
+.alert-warning {
+    background-color: blanchedalmond;
+    font-weight: bold;
+    color: #cc0000;
+    margin-left: 26%;
+    margin-right: 38%;
+    text-align: center;
+}
+
+
+.alert-info {
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    margin-left: 26%;
+    margin-right: 38%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+}
+
+
+
+
+
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+    .form-group input[type="checkbox"] + .btn-group > label span {
+        width: 20px;
+    }
+
+        .form-group input[type="checkbox"] + .btn-group > label span:first-child {
+            display: none;
+        }
+
+        .form-group input[type="checkbox"] + .btn-group > label span:last-child {
+            display: inline-block;
+        }
+
+    .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+        display: inline-block;
+    }
+
+    .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+        display: none;
+    }

@@ -1,0 +1,45 @@
+﻿@model JobInterviewQuiz.Model.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Login.css" rel="stylesheet" />
+
+<div class="bodyContent">
+    <div class="loginForm">
+
+        <div class="col-md-6">
+            <div class=" well loginContainer">
+                <div class="signIn">Sign In</div>
+
+
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        @Model.ErrorMessage;
+                    </div>
+                }
+
+                <form method="post" action="/User/Login" accept-charset="UTF-8">
+                    <div>
+                        <input type="text" id="username" name="username" placeholder="Username">
+                    </div>
+                    <div>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                    </div>
+                    <div>
+                        <input type="submit" name="submit" class="btn btn-danger" value="LogIn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6 alert alert-danger" role="alert">
+            <p>To solve this Test Interview you will need access to your account with your user and password received on e-mail.</p>
+            <p>Once you log in with the supplied credentials, the stopwatch will start and you will have to complete all question and submit the answers. After the allocated time has elapsed, it will become impossible to continue the test.</p>
+            <p>The ERNI team wishes you success and eagerly awaits your submission!</p>
+        </div>
+    </div>
+</div>

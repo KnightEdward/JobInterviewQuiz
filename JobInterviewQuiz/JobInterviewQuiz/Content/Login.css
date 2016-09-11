@@ -1,0 +1,52 @@
+﻿.bodyContent
+{
+    position:absolute;
+}
+
+.loginForm{
+    position:relative;
+    top:350px;
+    margin-right:17%;
+   
+}
+
+.loginContainer{
+    max-width:310px;
+    
+}
+
+.alert > p, .alert > ul {
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.alert-danger {
+    font-weight: bold;
+    font-size: large;
+}
+
+.btn-danger {
+    color: #ffffff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    margin-left: 30%;
+    margin-top: 15px;
+    width: 100px;
+     
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 5px;
+    margin-left: 37px;
+}
+
+
+.signIn {
+    font-weight: bold;
+    font-size: large;
+    margin-left: 85px;
+    padding: 10px;
+}

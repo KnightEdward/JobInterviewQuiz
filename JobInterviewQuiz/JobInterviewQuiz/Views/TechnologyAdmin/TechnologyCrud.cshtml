@@ -1,0 +1,32 @@
+﻿@model JobInterviewQuiz.Model.ViewModels.TecnologyAdminViewModel
+@{
+    ViewBag.Title = "TechnologyCrud";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<body>
+    <div class="container">
+
+
+        <h2>Technology</h2><br />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <input type="text" class="form-control" name="TechnologyAdminText" placeholder="Enter a technology" />
+                @Html.ValidationMessageFor(model => model.TechnologyText)
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="TechnologyText">
+                    @foreach (var technology in Model.TechnologyQuestionAdminList)
+                    {
+                        <option value="@technology.TechnologyQuestionText">@technology.TechnologyQuestionText</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" formmethod="post" formaction="@Url.Action("AddTecnology", "TechnologyAdmin")" value="Add" />
+                <input type="submit" class="btn btn-default" formmethod="post" formaction="@Url.Action("UpdateTecnology", "TechnologyAdmin")" value="Update" />
+                <input type="submit" class="btn btn-default" formmethod="post" formaction="@Url.Action("DeleteTecnology", "TechnologyAdmin")" value="Delete" />
+            </div>
+        </form>
+    </div>
+</body>

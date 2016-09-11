@@ -1,0 +1,31 @@
+﻿
+
+@{
+    ViewBag.Title = "StartPage";
+    Layout = null;
+
+}
+
+<link href="~/Content/StartPage.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<div class="bodyContent">
+
+    <div class="firstPage">
+        <h1> ERNI Romania - .NET Tech Quiz </h1>
+        <h2> Hello @*@this.QuizUser.Username*@ Bob ! </h2> 
+        <h3> Welcome to the tech quiz! </h3>
+    </div>
+
+
+    @*<a href="/Quiz/Question" >Start the quiz</a>*@
+
+    <form method="post" action="/Quiz/Question">
+
+        <input type="submit" value="Start the quiz" style="height: 30px; width: 160px" class="buttonStart" />
+    </form>
+
+    <div class="Image">
+        <img src="/Images/cluj.jpg">
+    </div>
+</div>

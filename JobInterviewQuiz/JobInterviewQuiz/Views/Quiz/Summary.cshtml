@@ -1,0 +1,68 @@
+﻿@model JobInterviewQuiz.Model.ViewModels.LastPageViewModel
+@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Summary.css" rel="stylesheet" />
+<div class="bodyContent">
+    <div>
+        <p class="StyleForParagraf">Points: @String.Format("{0:0.00}", Model.Points) out of 70</p>
+        <p class="StyleForParagraf">Percentage: @String.Format("{0:0.00}", Model.Percent) %</p>
+        <p class="StyleForParagraf">Duration: @String.Format("{0:hh\\:mm\\:ss}", Model.Timer)</p>
+        <p class="StyleForParagraf">Date started: @Model.InitialDateTime</p>
+        <p class="StyleForParagraf">Date finsihed: @Model.FinalDateTime</p>
+    </div><br />
+
+    <a class="StyleForParagraf" href="javascript:window.print();">Print this page</a>
+
+
+    <div class="feedbackContent">
+
+        <p class="feedback">Feedback</p>
+        <div class="tick"> &#10004; </div>
+        <div class="textTick">Correctly answered</div>
+        <div class="untick">&#x2718;</div>
+        <div class="textUntick">Incorrectly answered</div>
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Question</td>
+                <td>Your Answer</td>
+                <td>Correct Answer</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var answer in Model.QuestionsAndAnswers)
+
+            {
+                <tr>
+
+                    <td>@answer.questionText</td>
+                    <ol>
+                        <td>
+                            @foreach (var listAnswers in answer.aswerPosibleText)
+                            {
+                            <li>@listAnswers</li>
+                            }
+                            </td>
+                        </ol>
+                        <ol>
+                            <td>
+                                @foreach (var listAnswersCorect in answer.answerCorrectText)
+                                {
+
+                                <li> @listAnswersCorect</li>
+                                }
+                                </td>
+                            </ol>
+                        </tr>
+            }
+
+        </tbody>
+
+    </table>
+</div>

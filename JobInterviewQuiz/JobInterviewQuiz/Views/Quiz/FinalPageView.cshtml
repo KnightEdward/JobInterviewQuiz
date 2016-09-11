@@ -1,0 +1,36 @@
+﻿@model JobInterviewQuiz.Model.ViewModels.LastPageViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FinishPage</title>
+</head>
+<body>
+
+    <div class="lastPage">
+        <p>Points:@Model.Points out of 70</p>
+        <p>Percentage: @Model.Percent %</p>
+        <p>Duration:</p>
+        <p>Date started:</p>
+        <p>Date finsihed:</p>
+    </div>
+
+    Print this Page!!
+
+    <a href="/Quiz/Question" style="height: 30px; width: 160px" class="buttonStart">Start the quiz</a>
+
+
+
+    <div class="Image">
+        <img src="/Images/cluj.jpg">
+    </div>
+
+</body>
+</html>
+
+

@@ -51,9 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnswerDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionDal.cs" />
     <Compile Include="QuizEntities.cs" />
+    <Compile Include="TechnologyQuestionDal.cs" />
+    <Compile Include="TestQuestionsAnswerDal.cs" />
+    <Compile Include="TestQuestionsDal.cs" />
+    <Compile Include="TestsDal.cs" />
+    <Compile Include="TestTypeDal.cs" />
+    <Compile Include="UserDal.cs" />
+    <Compile Include="UserTestDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,0 +1,58 @@
+﻿@model JobInterviewQuiz.Model.ViewModels.TestModel
+
+@{
+    ViewBag.Title = "TestPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TestPage</h2>
+
+<h1> @Model.Number </h1>
+
+
+<input type="submit" value="Add car" class="submit" />
+
+
+<button type="button" class="btn btn-lg" data-toggle="modal" data-target="#AvailableTests" id="modButtons">
+    Available Questions
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="AvailableTests" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> You still have questions set for review !
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <div class="container">
+
+                    <div class="pull-left">
+
+                        <button type="button" class="btn btn-lg" data-dismiss="modal" id="AvQ" onclick="$('#modButtons').css()"> Review Questions </button>
+
+                    </div>
+
+                    <div class="pull-right">
+
+                        <button type="button" class="btn btn-lg" data-dismiss="modal" id="AvQ" onclick="$('#modButtons').css()"> Finish Test </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

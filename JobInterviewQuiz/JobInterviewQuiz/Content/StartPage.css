@@ -1,0 +1,46 @@
+﻿.bodyContent{
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.firstPage {
+    left: 25%;
+    right: 25%;
+    font-size: 100%;
+    width: 100%;
+    text-align: center;
+    margin-top: 25%;
+    font-family: Trebuchet MS;
+}
+
+.buttonStart {
+    background-color: #f44336;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    text-decoration: none;
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-box-shadow: 5px 5px 5px #000000;
+    -moz-box-shadow: 5px 5px 5px #000000;
+    box-shadow: 5px 5px 5px #000000;
+    font-family: Trebuchet MS;
+    border: none;
+}   
+
+div.Image img {
+    width: 100%;
+    height: auto;
+}
+
+.Image {
+    position: absolute;
+    top: 8%;
+    left: 25%;
+    right: 25%;
+    max-width: 100%;
+    align-content: center;
+}

@@ -154,19 +154,48 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestionAdminController.cs" />
+    <Compile Include="Controllers\QuizController.cs" />
+    <Compile Include="Controllers\TechnologyAdminController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DalFactory.cs" />
+    <Compile Include="Infrastructure\BaseController.cs" />
+    <Compile Include="Infrastructure\BaseWebViewPage.cs" />
+    <Compile Include="Infrastructure\FilterAttribute\ValidateQuizUser.cs" />
+    <Compile Include="Infrastructure\QuizUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\SHA512Encrypter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminQuestionCrud.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\Question.css" />
+    <Content Include="Content\StartPage.css" />
+    <Content Include="Content\Summary.css" />
+    <Content Include="Content\UserAdmin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\admin.jpeg" />
+    <Content Include="Images\check.jpg" />
+    <Content Include="Images\cluj.jpg" />
+    <Content Include="Images\errorImg.jpg" />
+    <Content Include="Images\header.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logoLogin.jpg" />
+    <Content Include="Images\members-feel-welcome-in-their-new-association-cma-association-group-fM9xiN-clipart.jpg" />
+    <Content Include="Scripts\AddInput.js" />
+    <Content Include="Scripts\Administration.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -175,6 +204,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ChangeLanguage.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -182,9 +212,14 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\LoadingBar.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ProgressBarAndTimer.js" />
+    <Content Include="Scripts\QuestionAdmin.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\TestScript.js" />
+    <Content Include="Scripts\ValidationRadioButton.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -197,9 +232,22 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\StartPageAdmin.cshtml" />
+    <Content Include="Views\AdminUser\EditUser.cshtml" />
+    <Content Include="Views\AdminUser\UserAdmin.cshtml" />
+    <Content Include="Views\Home\AddAnswers.cshtml" />
+    <Content Include="Views\QuestionAdmin\SearchQuestionAdmin.cshtml" />
+    <Content Include="Views\Quiz\ErrorPage.cshtml" />
+    <Content Include="Views\Quiz\FinalPageView.cshtml" />
+    <Content Include="Views\Quiz\Question.cshtml" />
+    <Content Include="Views\Quiz\StartPage.cshtml" />
+    <Content Include="Views\Quiz\Summary.cshtml" />
+    <Content Include="Views\Quiz\TestPage.cshtml" />
+    <Content Include="Views\Shared\MainLayout.cshtml" />
+    <Content Include="Views\TechnologyAdmin\TechnologyCrud.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

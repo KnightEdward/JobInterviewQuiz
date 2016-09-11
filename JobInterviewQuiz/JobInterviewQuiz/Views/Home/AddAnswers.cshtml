@@ -1,0 +1,25 @@
+﻿
+
+<div id="p_scents">
+
+    <div id="stuff">
+        <div class="input-group input-group-lg">
+
+            <span class="input-group-addon"> Answer Text </span>
+
+            <input typeof="text" class="form-control" id="p_scnt" size="20" name="Answers" value="@Model.Answers[0]" placeholder="Input Value" required="required" oninvalid="InvalidMsg(this, 'warninAnswer');" oninput="InvalidMsg(this, 'warninAnswer');" />
+
+            <select class="form-control" id="dropDown" name="ValueAnswer">
+                <option value="Correct">Correct</option>
+                <option value="Incorrect">Incorrect</option>
+            </select>
+
+
+
+        </div> <br />
+
+    </div>
+
+</div>
+
+<script src="~/Scripts/QuestionAdmin.js"></script>

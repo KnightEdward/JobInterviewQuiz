@@ -1,0 +1,59 @@
+﻿@model JobInterviewQuiz.Model.ViewModels.QuestionViewModel
+
+
+@{
+    ViewBag.Title = "SearchQuestionAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+@Scripts.Render("~/bundles/jquery");
+<script src="~/Scripts/QuestionAdmin.js"></script>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+
+        <div class="form-group">
+
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.QuestionText, new { htmlAttributes = new { @class = "form-control QuestionText" } })
+
+            </div>
+        </div>
+
+    </div>
+}
+
+<script>
+
+            $(".QuestionText")
+                .keypress({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/QuestionAdmin/SearchQuestionAdmin",
+                            type: "POST",
+                            dataType: "json",
+                            data: { refix: request.term },
+                            success: function (data) {
+                                response($.map(data,
+                                    function (item) {
+                                        return { label: item.Name, value: item.Name };
+                                    }));
+
+                            }
+                        });
+                    },
+                    messages: {
+                        noResults: "",
+                        results: ""
+                    }
+                });
+
+</script>

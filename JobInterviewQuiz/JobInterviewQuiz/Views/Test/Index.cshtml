@@ -1,0 +1,529 @@
+﻿@using JobInterviewQuiz.Model.ViewModels
+@model JobInterviewQuiz.Model.ViewModels.TestViewModel
+
+@{
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    @*<link href="~/Content/bootstrap-cerulean.css" rel="stylesheet" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+
+    <title>Index</title>
+
+    <style>
+        /*.page-header {
+            text-align: center;
+        }*/
+
+        #TestTitle {
+            text-align: center;
+        }
+
+        .input-group-addon {
+            background-color: #066294;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            min-width: 200px;
+        }
+
+        .btn {
+            background-color: #303C5E;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+        }
+
+        #AvQ {
+            margin: auto;
+            display: block;
+        }
+
+        #myModalLabel {
+            text-align: center;
+        }
+
+        #errorMessage {
+            text-align: center;
+        }
+
+        #successMessage {
+            text-align: center;
+        }
+
+        #modButtons {
+            min-width: 200px;
+        }
+
+        #addTestButton {
+            min-width: 200px;
+            margin-left: 250px;
+        }
+
+        #existingTestsButtons {
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            color: #F2A552;
+        }
+
+        .btn:focus {
+            color: #F2A552;
+        }
+
+        .modal-body {
+            position: relative;
+            overflow-y: auto;
+            max-height: 400px;
+            padding: 15px;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <div class="page-header" id="TestTitle">
+                <h1> Admin Test Page </h1>
+            </div>
+        </div>
+    </div>
+
+    @*<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo" id="bt1">Simple collapsible</button>
+        <div id="demoPliz" hidden>
+            <h1> nu mere </h1>
+        </div>*@
+
+
+
+
+
+    <div class="container">
+
+        <div class="pull-left">
+
+            <button type="button" class="btn btn-lg" id="existingTestsButtons">
+                Existing Tests
+            </button>
+
+        </div>
+
+        <button type="button" class="btn btn-lg" id="addTestButton">
+            Add New Test
+        </button>
+
+
+
+        <div class="pull-right">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#AvailableQuestions" id="modButtons">
+                Available Questions
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="AvailableQuestions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"> Available Questions </h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <table class="table table-striped">
+
+                        <tr>
+                            <th></th>
+                            @for (int i = 0; i < Model.TestLevelList.Count; i++)
+                            {
+                                <th> @Model.TestLevelList[i] </th>
+                            }
+                        </tr>
+
+                        @for (int i = 0; i < Model.QuestionGrid.GetLength(0); i++)
+                        {
+                            <tr>
+                                <th> @Model.TechnologyQuestionsList[i] </th>
+                                @for (int j = 0; j < Model.QuestionGrid.GetLength(1); j++)
+                                {
+                                    <td> @Model.QuestionGrid[i, j] </td>
+                                }
+                            </tr>
+                        }
+
+
+
+                    </table>
+
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-lg" data-dismiss="modal" id="AvQ"> Thank You ! </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    @*<div class="modal fade" id="AvailableTests" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn btn-lg" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"> Available Tests </h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <table class="table table-striped">
+
+                            <tr>
+                                <th> Test </th>
+                                <th> Name </th>
+                                <th> Type </th>
+                                <th> Level </th>
+                                <th> Number Of Questions</th>
+
+                                @foreach (var tech in Model.TechnologyQuestionsList)
+                                {
+                                    <th> @tech </th>
+                                }
+
+                            </tr>
+
+                            @{
+                                var contor = 1;
+                                foreach (var test in Model.TestList)
+                                {
+
+
+                                    <tr id="@contor">
+                                        <th> @contor </th>
+                                        <td> @test.Name </td>
+                                        <td> @test.TestTypeString </td>
+                                        <td> @test.LevelTest </td>
+                                        <td> @test.NumberOfQuestions </td>
+
+                                        @foreach (var techNumber in test.TechValuesList)
+                                        {
+                                            <td> @techNumber </td>
+                                        }
+
+                                        <td> <a type="submit" class="btn btn-lg" href="javascript:DeleteTest(@test.Id,@contor);"> Delete </a> </td>
+                                    </tr>
+
+                                contor++;
+                            }
+                            }
+
+
+                        </table>
+
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-lg" data-dismiss="modal" id="AvQ" onclick="$('#modButtons').css()"> Thank You ! </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+
+
+    <form>
+        <div class="container">
+
+
+
+            <input type="hidden" name="visited" value="" />
+
+            @foreach (var techQuestion in Model.TechnologyQuestionsList)
+            {
+                <input type="hidden" value="@techQuestion" name="TechnologyQuestionsList" />
+            }
+
+            @*<div class="page-header">
+                    <h1> Test Data </h1>
+                </div>
+
+                <div class="input-group input-group-lg">
+
+                    <span class="input-group-addon"> Test Name </span>
+                    <input type="text" class="form-control" placeholder="Enter test name" name="TestName" />*@
+
+            @*@Html.ValidationMessageFor(model => model.TestName)*@
+
+        </div><br />
+
+        <div id="AddTestField" hidden>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <div class="page-header" style="width:479px">
+                            <h1> Test Data </h1>
+                        </div>
+
+                        <div class="input-group input-group-lg">
+
+                            <span class="input-group-addon"> Test Name </span>
+                            <input type="text" class="form-control" placeholder="Enter test name" name="TestName" />
+
+                            @*@Html.ValidationMessageFor(model => model.TestName)*@
+
+                        </div><br />
+
+                        <div class="input-group input-group-lg">
+
+                            <span class="input-group-addon"> Test Type </span>
+                            <select class="form-control" name="TestType">
+                                @foreach (var testType in Model.TestTypeList)
+                                {
+                                    <option> @testType.Type </option>
+                                }
+                            </select>
+
+                        </div><br />
+
+                        <div class="input-group input-group-lg">
+
+                            <span class="input-group-addon"> Test Level </span>
+                            <select class="form-control" name="TestLevel">
+                                @foreach (var testLevel in Model.TestLevelList)
+                                {
+                                    <option> @testLevel </option>
+                                }
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="page-header" style="width:498px">
+                            <h1> Questions per technology </h1>
+                        </div>
+
+                        <div style="overflow-y : scroll;height:180px;width:500px">
+
+                            @foreach (var technology in Model.TechnologyQuestionsList)
+                            {
+                                <div class="input-group input-group-lg">
+
+                                    <span class="input-group-addon"> @technology </span>
+                                    <input type="number" class="form-control" name="TechQuestionNumber" value="0" min="0" step="1" />
+
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            @*<div class="input-group input-group-lg">
+
+                    <span class="input-group-addon"> Test Type </span>
+                    <select class="form-control" name="TestType">
+                        @foreach (var testType in Model.TestTypeList)
+                        {
+                            <option> @testType.Type </option>
+                        }
+                    </select>
+
+                </div><br />
+
+                <div class="input-group input-group-lg">
+
+                    <span class="input-group-addon"> Test Level </span>
+                    <select class="form-control" name="TestLevel">
+                        @foreach (var testLevel in Model.TestLevelList)
+                        {
+                            <option> @testLevel </option>
+                        }
+                    </select>
+
+                </div><br />
+
+                <div class="page-header">
+                    <h1> Number of questions per technology </h1>
+                </div>
+
+                <div style="overflow-y : scroll;height:200px;width:500px">
+
+                        @foreach (var technology in Model.TechnologyQuestionsList)
+                        {
+                            <div class="input-group input-group-lg">
+
+                                <span class="input-group-addon"> @technology </span>
+                                <input type="number" class="form-control" name="TechQuestionNumber" value="0" min="0" step="1" />
+
+                            </div>
+                        }
+
+                </div>*@
+
+            <div class="container">
+
+                <br /><div class="alert alert-danger" id="errorMessage">
+                    <strong> @TestViewModel.ErrorMessage </strong>
+                </div>
+
+                <br /><div class="alert alert-success" id="successMessage">
+                    <strong> @TestViewModel.SuccessMessage </strong>
+                </div>
+
+                <br /><input type="submit" value="Add Test" class="btn btn-lg" formmethod="post" formaction="@Url.Action("AddTest", "Test")" id="AvQ" /> <br /><br />
+
+            </div>
+
+        </div>
+
+
+
+        <br /><br /> <div id="ExistingTestsField">
+            <div class="container">
+                <table class="table table-striped">
+
+                    <tr>
+                        <th> Test </th>
+                        <th> Name </th>
+                        <th> Type </th>
+                        <th> Level </th>
+                        <th> Number Of Questions</th>
+
+                        @foreach (var tech in Model.TechnologyQuestionsList)
+                        {
+                            <th> @tech </th>
+                        }
+
+                    </tr>
+
+                    @{
+                        var testContor = 1;
+                        foreach (var test in Model.TestList)
+                        {
+
+
+                            <tr id="@testContor">
+                                <th> @testContor </th>
+                                <td> @test.Name </td>
+                                <td> @test.TestTypeString </td>
+                                <td> @test.LevelTest </td>
+                                <td style="text-align:center"> @test.NumberOfQuestions </td>
+
+                                @foreach (var techNumber in test.TechValuesList)
+                                {
+                                    <td> @techNumber </td>
+                                }
+
+
+                                <td>  </td>
+                                <td> <a type="submit" class="btn btn-lg" href="javascript:DeleteTest(@test.Id,@testContor);"> Delete </a> </td>
+                            </tr>
+
+                            testContor++;
+                        }
+                    }
+
+
+                </table>
+
+
+            </div>
+        </div>
+
+
+    </form>
+
+
+    <script src="~/Scripts/TestScript.js"></script>
+
+    <script>
+
+        if(@TestViewModel.ErrorMessage.Count() != 0 || @TestViewModel.SuccessMessage.Count() != 0)
+        {
+            $("#ExistingTestsField").hide();
+            $("#AddTestField").show();
+        }
+
+        $("#existingTestsButtons").click(function() {
+            if( $("#ExistingTestsField").is(':visible'))
+                $("#ExistingTestsField").slideUp();
+            else
+            {
+                $("#ExistingTestsField").slideDown();
+                $("#AddTestField").hide();
+            }
+
+
+        });
+
+        $("#addTestButton").click(function() {
+            if( $("#AddTestField").is(':visible'))
+                $("#AddTestField").slideUp();
+            else
+            {
+                $("#AddTestField").slideDown();
+                $("#ExistingTestsField").hide();
+            }
+
+
+        });
+
+        $("#bt1").click(function() {
+            if( $("#demoPliz").is(':visible'))
+                $("#demoPliz").slideUp();
+            else
+                $("#demoPliz").slideDown();
+
+        });
+
+        if($("#demoPliz").hasClass('ui-collapsible-collapsed'))
+            $("#demoPliz").slideUp();
+
+        var error = @TestViewModel.ErrorMessage.Length;
+        var success = @TestViewModel.SuccessMessage.Length;
+
+        MessageCheck(error, success);
+
+    </script>
+
+</body>
+</html>

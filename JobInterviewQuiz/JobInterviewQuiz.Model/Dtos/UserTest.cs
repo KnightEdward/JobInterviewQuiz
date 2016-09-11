@@ -12,6 +12,8 @@ namespace JobInterviewQuiz.Model.Dtos
 
         public int TestId { get; set; }
 
+        public bool? IsFinished { get; set; }
+
         public virtual Test Test { get; set; }
 
         public virtual User User { get; set; }

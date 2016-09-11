@@ -1,0 +1,73 @@
+﻿<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @*<link href="~/Content/bootstrap-cerulean.css" rel="stylesheet" />*@
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .navbar-nav {
+            display: table;
+            width: 100%;
+            margin: 0;
+        }
+
+            .navbar-nav > li {
+                float: none;
+                display: table-cell;
+                text-align: center;
+            }
+
+        .navbar navbar-inverse {
+            background-color: #229922;
+            color: #ffffff;
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+
+            <div class="collapse navbar-collapse" id="navigation-elements">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="@Url.Action("StartPageAdmin", "Admin")"> Home </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UserAdmin", "AdminUser")"> User </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Home")"> Question </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("TechnologyCrud", "TechnologyAdmin")"> Category </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Test")"> Test </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("RedirectToLogInPage", "Base")"> Log out </a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </div>
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
